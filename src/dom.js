@@ -1,8 +1,17 @@
 let addTaskBtn = document.querySelector(".addtaskbtn")
+
 addTaskBtn.addEventListener('click', () => {
-   addTaskEntry(); 
+   document.getElementById("form").style.display="block";
 });
 
+function openForm() {
+    document.getElementById("form").style.display="block";
+    
+}
+
+function closeForm() {
+    document.getElementById("form").style.display="none";
+}
 
 function addTaskEntry() {
     const taskList = document.querySelector(".tasklist")
@@ -12,7 +21,7 @@ function addTaskEntry() {
     removeBtn.setAttribute("type", "button");
     removeBtn.classList += "removetaskbtn";
     removeBtn.textContent = "Remove Task";
-    newTask.textContent = "New task here!";
+    newTask.textContent = "Sample Task!";
     taskList.appendChild(newTask);
     newTask.appendChild(removeBtn);
     removeBtn.addEventListener('click', () => {
@@ -21,6 +30,9 @@ function addTaskEntry() {
 }
 
 
+
 export {
-    addTaskEntry
+    addTaskEntry,
+    openForm,
+    closeForm
 };
