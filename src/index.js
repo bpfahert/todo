@@ -1,28 +1,22 @@
 import './style.css';
-import {addTaskEntry, closeForm, openForm} from './dom';
+import {removeAllTasks, closeForm, openForm, renderTasks} from './dom';
 
 let projects = [];
-let tasks = [];
+let defaultTasks = [];
+projects[0] = defaultTasks;
 
-const task = (title, description, dueDate, priority, completed, projectName) => {
-    return {title, description, dueDate, priority, projectName};
-}
+const taskFactory = (title, description, dueDate, priority) => {
 
-const laundry = task("Laundry", "Do the laundry", "tomorrow", 1, false, "Today");
+    return {title, description, dueDate, priority};
+};
 
-function addTask(newTask) {
-    tasks.push(newTask)
-}
+const task = taskFactory('homework', 'do homework', 'tomorrow', 'important');
+const secondTask = taskFactory('dishes', 'do dishes', 'today', 'medium');
+defaultTasks.push(task);
+defaultTasks.push(secondTask);
 
+renderTasks(projects[0]);
 
-function createProject(title){
-    let newProjectName = title;
-    projects.push(newProjectName);
-}
-
-function taskController() {
-
-}
 
 let submitBtn = document.querySelector(".submitbtn");
 submitBtn.addEventListener('click', () => {
@@ -30,17 +24,9 @@ submitBtn.addEventListener('click', () => {
     const newDescription = document.querySelector("#description");
     const newDueDate = document.querySelector("#duedate");
     const newPriority = document.querySelector("#priority");
-    const newTask = task(`${newTitle.value}`, `${newDescription.value}`, `${newDueDate.value}`, `${newPriority.value}`);
-    tasks.push(newTask);
-    console.table(tasks);
-    addTaskEntry();
+    const newTask = taskFactory(`${newTitle.value}`, `${newDescription.value}`, `${newDueDate.value}`, `${newPriority.value}`);
+    defaultTasks.push(newTask);
+    renderTasks(projects[0]);
     closeForm();
+    console.table(defaultTasks);
 });
-
-
-addTaskEntry();
-
-addTask(laundry);
-console.table(tasks);
-
-//project should be an object that contains an array object?
