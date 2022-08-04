@@ -34,8 +34,6 @@ projectArray[1].array.push(tomorrowTask);
 renderTasks(projectArray[0].array);
 
 //button for creating a new task 
-
-//TODO: ALLOW ADDING TASKS TO SELECTED PROJECT
 let submitBtn = document.querySelector(".submittaskbtn");
 submitBtn.addEventListener('click', () => {
     const newTitle = document.querySelector("#title");
@@ -43,8 +41,8 @@ submitBtn.addEventListener('click', () => {
     const newDueDate = document.querySelector("#duedate");
     const newPriority = document.querySelector("#priority");
     const newTask = taskFactory(`${newTitle.value}`, `${newDescription.value}`, `${newDueDate.value}`, `${newPriority.value}`);
-    projectArray[0].array.push(newTask); 
-    renderTasks(projectArray[0].array);
+    projectArray[findCurrentProjectIndex()].array.push(newTask); 
+    renderTasks(projectArray[findCurrentProjectIndex()].array);
     closeForm("form");
 });
 
@@ -75,3 +73,15 @@ console.log(projectArray[0].array);
 console.table(projectArray);
 // console.log(projects[0].name);
 // console.log(defaultTasks.name);
+
+
+function findCurrentProjectIndex() {
+    const currentProjectTitle = document.querySelector(".currentprojecttitle");
+    const projectIndex = projectArray.findIndex(object => {
+        return object.name === `${currentProjectTitle.textContent}`;
+    });
+    console.log(projectIndex);
+    return projectIndex;
+}
+
+// findCurrentProjectIndex();

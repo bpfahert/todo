@@ -65,7 +65,7 @@ function renderTasks(array) {
     newTask.appendChild(newPriority);
     newTask.appendChild(completeBtn);
     newTask.appendChild(removeBtn);
-
+    
     removeBtn.addEventListener('click', () => {
         if (array.length > 1) {
             array.splice(i, 1);
@@ -76,7 +76,7 @@ function renderTasks(array) {
         newTask.remove();
     });
 
-    //Only works once, won't switch back
+    //Only works once, won't switch back. also only works until previous array items are removed TODO FIX BUG
     completeBtn.addEventListener('click', () => {
         if (completeBtn.textContent == "Task Complete?") {
             array[i].complete = true;
@@ -93,20 +93,26 @@ function renderTasks(array) {
 //render the sidebar from projects array
 function renderSidebar(project) {
     removeAllProjects();
-
-    //RemoveTitle() needed
-
-
     for (let i = 0; i < project.length; i++) {
         let addProjectBtn = document.querySelector(".addprojectbtn");
         let projectList = document.querySelector(".projectlist");
-        let projectEntry = document.createElement("button");
 
+        let projectEntryDiv = document.createElement("div");
+        projectEntryDiv.classList += "projectdiv";
+
+        let projectEntry = document.createElement("button");
         projectEntry.setAttribute("type", "button");
         projectEntry.classList += "project";
         projectEntry.textContent = `${project[i].name}`;
 
-        projectList.insertBefore(projectEntry, addProjectBtn);
+        let projectRemoveBtn = document.createElement("button");
+        projectRemoveBtn.setAttribute("type", "button");
+        projectRemoveBtn.classList += "projectremovebtn";
+        projectRemoveBtn.textContent = "X ";
+
+        projectList.insertBefore(projectEntryDiv, addProjectBtn);
+        projectEntryDiv.appendChild(projectEntry);
+        projectEntryDiv.appendChild(projectRemoveBtn);
 
         projectEntry.addEventListener('click', () => {
             let currentProject = project[i].array;
@@ -118,7 +124,7 @@ function renderSidebar(project) {
 };
 
 function removeAllProjects() {
-    let allProjects = document.querySelectorAll(".project");
+    let allProjects = document.querySelectorAll(".projectdiv");
     allProjects.forEach(project => {
         project.remove();
     });

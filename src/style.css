@@ -17,6 +17,10 @@ li {
 
 }
 
+.projectremovebtn {
+  width: 20px;
+}
+
 .projectlist {
   display: flex;
   flex-direction: column;
