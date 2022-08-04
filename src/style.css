@@ -1,16 +1,35 @@
+li {
+  list-style: none;
+}
+
 #container {
   display: flex;
 
 }
 
 .sidebar {
-  display: flex;
   flex-direction: column;
   background: red;
   width: 30%;
   height: 800px;
   border: solid black 1px;
   justify-self: flex-start;
+
+}
+
+.projectlist {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 25px;
+  gap: 10px;
+}
+
+#projectform {
+  display: none;
+  background-color: white;
+  border: solid black 1px;
+  padding: 10px;
 
 }
 
@@ -34,8 +53,10 @@
   height: 50px;
 }
 
-
-.addtaskbtn, .removetaskbtn {
+.addtaskbtn, 
+.completetaskbtn, 
+.removetaskbtn,
+.addprojectbtn {
   border-radius: 10px;
   background-color: blue;
   font-weight: bold;
@@ -49,6 +70,15 @@
   margin: 2px;
 }
 
+.completetaskbtn {
+  margin-top: 2px;
+  margin-bottom: 2px;
+  height: 25px;
+  font-size: 11px;
+  width: 110px;
+  align-self: flex-end;
+}
+
 .removetaskbtn {
   margin-top: 2px;
   margin-bottom: 2px;
@@ -58,11 +88,19 @@
   align-self: flex-end;
 }
 
+.currentprojecttitle {
+  width: 90px;
+  margin-left: 5px;
+  margin-top: 5px;
+  font-weight: bold;
+}
+
 .tasklist {
   display: flex;
   flex: auto;
   flex-direction: column;
   list-style: none;
+  margin-top: 50px;
 }
 
 #taskform {
@@ -82,3 +120,4 @@
   position: relative;
   bottom: 2px;
 }
+

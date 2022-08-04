@@ -9,9 +9,21 @@
 </head>
 <body>
     <div id="container">
-        <div class="sidebar">Projects</div>
+        <div class="sidebar">Projects:
+            <ul class="projectlist">
+                <button type="button" class="addprojectbtn">Add Project</button>
+                <form action="" id="projectform">
+                    <h2>Add New Project:</h3><p></p>
+                    <label for="projectname">Project Name:</label>
+                    <input type="text" placeholder="Project Name" name="projectname" id="projectname" />
+                    <p></p>
+                    <button type="button" class="projectsubmitbtn">Submit</button>
+                </form>
+            </ul>
+        </div>
         <div class="taskcontainer">
-            <div class="taskdiv">To do list:
+            <div class="taskdiv">
+                <div class="currentprojecttitle">defaultTasks</div><p></p>
             <ul class="tasklist">
             </ul>
             </div>
@@ -28,7 +40,7 @@
                     <label for="priority">Priority</label>
                     <input type="text" placeholder="Priority" name="priority" id="priority" /><p></p>
                     <p></p>
-                    <button type="button" class="submitbtn">Submit</button>
+                    <button type="button" class="submittaskbtn">Submit</button>
                 </form>
                 <button type="button" class="addtaskbtn">Add Task</button>
         </div>
